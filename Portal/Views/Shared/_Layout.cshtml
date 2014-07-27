@@ -27,12 +27,12 @@
 	<div class="container body-content">
 		@RenderBody()
 		<hr />
-		<footer>
-			<p>Made by Jeff Polakiewicz.</p>
-			<p>Flatly theme from <a href="http://bootswatch.com/flatly/">bootswatch.com</a>.</p>
-		</footer>
 	</div>
-
+	<footer class="navbar-default">
+		<div class="container">
+			<p>Made by Jeff Polakiewicz. Flatly theme from <a href="http://bootswatch.com/flatly/">bootswatch.com</a>.</p>
+		</div>
+	</footer>
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")
 	@RenderSection("scripts",required :false)
