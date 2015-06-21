@@ -12,5 +12,10 @@ namespace Portal.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult Resume()
+		{
+			return View();
+		}
 	}
 }

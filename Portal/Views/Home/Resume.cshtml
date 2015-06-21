@@ -1,0 +1,347 @@
+﻿@{
+	Layout=null;
+}
+
+@helper SectionHeader(string icon,string heading)
+{
+	<div class="well">
+		<div class="row">
+			<div class="col-xs-2 col-sm-1">
+				<h2><i class="fa fa-@icon"></i></h2>
+			</div>
+			<div class="col-xs-10 col-sm-11">
+				<h2>@heading</h2>
+			</div>
+		</div>
+	</div>
+}
+
+@helper PanelHeader(string icon,string heading,bool smallOnly=false)
+{
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-xs-2 col-sm-1 @(smallOnly?"col-md-2":"")">
+				<i class="fa fa-@icon"></i>
+			</div>
+			<div class="col-xs-10 col-sm-11 @(smallOnly?"col-md-10":"")">
+				<h3 class="panel-title">@heading</h3>
+			</div>
+		</div>
+	</div>
+}
+
+@helper ContactInfo(string icon,string href,string text)
+{
+	<li class="list-group-item">
+		<div class="row">
+			<div class="col-xs-2 col-sm-1 col-md-2">
+				<i class="fa fa-@icon fa-lg"></i>
+			</div>
+			<div class="col-xs-10 col-sm-11 col-md-10">
+				<a href="@href">@text</a>
+			</div>
+		</div>
+	</li>
+}
+
+@helper TechnologyProficiency(string technology,ProficiencyLevel level)
+{
+	<div class="row">
+		<div class="col-xs-5 col-sm-4 col-md-5 col-lg-4">
+			<h4>@technology</h4>
+		</div>
+		<div class="col-xs-7 col-sm-8 col-md-7 col-lg-8">
+			<div class="progress progress-technology">
+				@if(level==ProficiencyLevel.High)
+				{
+					<div class="progress-bar progress-bar-danger" style="width: 100%"></div>
+				}
+				else if(level==ProficiencyLevel.Medium)
+				{
+					<div class="progress-bar progress-bar-warning" style="width: 66%"></div>
+				}
+				else if(level==ProficiencyLevel.Low)
+				{
+					<div class="progress-bar progress-bar-success" style="width: 33%"></div>
+				}
+			</div>
+		</div>
+	</div>
+}
+
+@helper ExperienceInfo(string title,string company,string dates)
+{
+	<blockquote>
+		<p><span class="text-success">@title</span><br />@company</p>
+		<small>@dates</small>
+	</blockquote>
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jeff Polakiewicz's Resume</title>
+	<link rel="icon" href="~/Content/Images/favicon.ico" />
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	@Styles.Render("~/Content/css")
+	<style type="text/css">
+		.progress-technology {
+			margin-top: 15px;
+			margin-bottom: 16px;
+		}
+		.anchor {
+			display: block;
+			position: relative;
+			top: -60px;
+			visibility: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#header">Jeff's Resume</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#skills">Skills</a></li>
+					<li><a href="#technologies">Technologies</a></li>
+					<li><a href="#experience">Experience</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<a class="anchor" id="header"></a>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="jumbotron">
+					<div class="row">
+						<div class="col-md-8">
+							<h1>Jeff Polakiewicz</h1>
+							<p>Software Engineer</p>
+						</div>
+						<div class="col-md-4">
+							<ul class="list-group">
+								@ContactInfo("envelope","mailto:shaangor@gmail.com","shaangor@gmail.com")
+								@ContactInfo("phone","tel:+18652001793","(865) 200 - 1793")
+								@ContactInfo("linkedin","https://www.linkedin.com/in/jeffpolakiewicz","LinkedIn Profile")
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="anchor" id="skills"></a>
+		<div class="row">
+			<div class="col-xs-12">
+				@SectionHeader("wrench","Skills")
+				<div class="row">
+					<div class="col-md-4">
+						<div class="panel panel-danger">
+							@PanelHeader("user","Client-Side Development",true)
+							<div class="panel-body">
+								<p>Using HTML, <span class="text-success">CSS</span>, JavaScript, and AngularJS. Experience with AJAX, jQuery, Bootstrap and Foundation frameworks. Responsive designs with interactivity.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-danger">
+							@PanelHeader("server","Server-Side Development",true)
+							<div class="panel-body">
+								<p>Using ASP.NET MVC and <span class="text-warning">WebForms</span> Public-facing and internal data entry sites. IIS deployment and management. AWS EC2 instance management.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-danger">
+							@PanelHeader("upload","Service Architectures",true)
+							<div class="panel-body">
+								<p>Using <span class="text-warning">WCF</span> and Web API. Experience with SOAP and REST protocols. Good understand of asynchrony and concurrency in such services. JSON and XML messaging.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="panel panel-warning">
+							@PanelHeader("database","Database Development",true)
+							<div class="panel-body">
+								<p>Using Microsoft SQL Server and Management Studio. Profiling and tracing. Query and stored procedure optimization. Relational table design.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-success">
+							@PanelHeader("windows","Desktop Applications",true)
+							<div class="panel-body">
+								<p>Using Windows Forms and WPF. Internal business applications. Data binding and event-driven paradigms. Understanding of asynchrony and concurrency in such applications. Minor UI design.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-success">
+							@PanelHeader("tablet","Mobile Applications",true)
+							<div class="panel-body">
+								<p>Using Cordova and PhoneGap. Minor Android experience. Optimizations for different platforms and device sizes. Minor experience with device hardware interaction.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="panel panel-primary">
+							@PanelHeader("user-plus","Solo and Team-Based Work",true)
+							<div class="panel-body">
+								<p>Agile and waterfall development cycles, with sprints and standups. Requirements gathering and client interfacing. New development and modification of legacy systems.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-primary">
+							@PanelHeader("keyboard-o","Programming Practices",true)
+							<div class="panel-body">
+								<p>Use of common design patterns and data structures. Brevity and clarity in code. Refactoring and organization. Dependency injection and unit testing.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-info">
+							@PanelHeader("asterisk","Miscellaneous",true)
+							<div class="panel-body">
+								<p>Minor experience with <span class="text-success">Java</span>, PHP, VB.NET, C++. MySQL and Oracle databases. Apache HTTP Server. Microsoft Office integration and macros.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="anchor" id="technologies"></a>
+		<div class="row">
+			<div class="col-xs-12">
+				@SectionHeader("laptop","Technologies")
+				<div class="row">
+					<div class="col-md-6">
+						<div class="panel panel-primary">
+							@PanelHeader("globe","Web & Client-side")
+							<div class="panel-body">
+								@TechnologyProficiency("Javascript",ProficiencyLevel.High)
+								@TechnologyProficiency("AngularJS",ProficiencyLevel.High)
+								@TechnologyProficiency("HTML",ProficiencyLevel.High)
+								@TechnologyProficiency("AWS",ProficiencyLevel.Medium)
+								@TechnologyProficiency("CSS",ProficiencyLevel.Low)
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="panel panel-primary">
+							@PanelHeader("desktop","Frontend & Services")
+							<div class="panel-body">
+								@TechnologyProficiency("MVC",ProficiencyLevel.High)
+								@TechnologyProficiency("Web API",ProficiencyLevel.High)
+								@TechnologyProficiency("WebForms",ProficiencyLevel.Medium)
+								@TechnologyProficiency("WCF",ProficiencyLevel.Medium)
+								@TechnologyProficiency("WPF",ProficiencyLevel.Low)
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="panel panel-primary">
+							@PanelHeader("sitemap","Backend & Database")
+							<div class="panel-body">
+								@TechnologyProficiency("C#",ProficiencyLevel.High)
+								@TechnologyProficiency(".NET",ProficiencyLevel.High)
+								@TechnologyProficiency("Entity Framework",ProficiencyLevel.High)
+								@TechnologyProficiency("SQL Server",ProficiencyLevel.Medium)
+								@TechnologyProficiency("Java",ProficiencyLevel.Low)
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="panel panel-primary">
+							@PanelHeader("cog","Tools & IDEs")
+							<div class="panel-body">
+								@TechnologyProficiency("Visual Studio",ProficiencyLevel.High)
+								@TechnologyProficiency("Git",ProficiencyLevel.High)
+								@TechnologyProficiency("SSMS",ProficiencyLevel.Medium)
+								@TechnologyProficiency("Subversion",ProficiencyLevel.Medium)
+								@TechnologyProficiency("NetBeans",ProficiencyLevel.Low)
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="anchor" id="experience"></a>
+		<div class="row">
+			<div class="col-xs-12">
+				@SectionHeader("briefcase","Experience")
+				<div class="row">
+					<div class="col-md-5 col-lg-4">
+						@ExperienceInfo("Software Engineer","SolTech, Inc.","Sept 2014 - Present")
+					</div>
+					<div class="col-md-7 col-lg-8">
+						<div class="panel panel-primary">
+							@PanelHeader("puzzle-piece","Projects")
+							<ul class="list-group">
+								<li class="list-group-item">Wide range of project for various size clients. Participated in client meetings and requirements gathering.</li>
+								<li class="list-group-item">Maintained website for LG Electronics Air Conditioning, called SOPS. Used <span class="text-danger">MVC</span> hosted on <span class="text-warning">AWS</span> serving thousands of clients.</li>
+								<li class="list-group-item">Created new website for Alpharetta Children's Dentistry as a full back-office solution. Used <span class="text-danger">MVC</span> with <span class="text-danger">AngularJS</span> frontend, interal <span class="text-danger">Web API</span> services, and integration with legacy <span class="text-warning">WebForms</span> site.</li>
+								<li class="list-group-item">Created mobile app for Intelligent Energy Solutions using Cordova with <span class="text-danger">AngularJS</span> Highly customized skinning and jQuery controls.</li>
+							</ul>
+						</div>
+						<div class="panel panel-info">
+							@PanelHeader("users","Teams")
+							<ul class="list-group">
+								<li class="list-group-item">Teams of 1-4 developers, depending on project, using <span class="text-danger">Git</span> as source control.</li>
+								<li class="list-group-item">Daily to bi-weekly standups based on project, using JIRA as issue tracker.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5 col-lg-4">
+						@ExperienceInfo("Software Developer","Securities Service Network, Inc.","May 2011 - Sept 2014")
+					</div>
+					<div class="col-md-7 col-lg-8">
+						<div class="panel panel-primary">
+							@PanelHeader("puzzle-piece","Projects")
+							<ul class="list-group">
+								<li class="list-group-item">Worked on major revamp of public-facing <span class="text-warning">WebForms</span> site, called FOCAL<em>web</em>, with hundreds of users.</li>
+								<li class="list-group-item">Created internal administrative data-entry and CRUD sites using <span class="text-danger">MVC</span></li>
+								<li class="list-group-item">Maintained web services using <span class="text-warning">WCF</span> and created new ones using <span class="text-danger">Web API</span></li>
+								<li class="list-group-item">Maintained workflow management client, called Ivanovo, using <span class="text-success">WPF</span> Data synchrony across clients using <span class="text-warning">WCF</span> callbacks.</li>
+								<li class="list-group-item">Heavy focus on security due to financial sector.</li>
+							</ul>
+						</div>
+						<div class="panel panel-info">
+							@PanelHeader("users","Teams")
+							<ul class="list-group">
+								<li class="list-group-item">Small team of 2-3 developers, using <span class="text-warning">Subversion</span> and <span class="text-danger">Git</span> as source control.</li>
+								<li class="list-group-item">Weekly scrum meetings using Trello and LeanKit as workflow and issue trackers.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="navbar-default">
+		<div class="container">
+			<p>Flatly theme from <a href="http://bootswatch.com/flatly/">bootswatch.com</a>.</p>
+		</div>
+	</footer>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

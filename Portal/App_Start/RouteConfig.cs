@@ -13,6 +13,8 @@ namespace Portal
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+			routes.MapRoute("Resume","Resume",new { controller="Home",action="Resume" });
+
 			routes.MapRoute(
 			    name :"Default",
 			    url :"{controller}/{action}/{id}",
