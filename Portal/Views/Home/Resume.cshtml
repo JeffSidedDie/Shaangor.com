@@ -54,7 +54,7 @@
 			<div class="progress progress-technology">
 				@if(level==ProficiencyLevel.High)
 				{
-					<div class="progress-bar progress-bar-danger" style="width: 100%"></div>
+					<div class="progress-bar progress-bar-success" style="width: 100%"></div>
 				}
 				else if(level==ProficiencyLevel.Medium)
 				{
@@ -62,7 +62,7 @@
 				}
 				else if(level==ProficiencyLevel.Low)
 				{
-					<div class="progress-bar progress-bar-success" style="width: 33%"></div>
+					<div class="progress-bar progress-bar-danger" style="width: 33%"></div>
 				}
 			</div>
 		</div>
@@ -146,15 +146,15 @@
 				@SectionHeader("wrench","Skills")
 				<div class="row">
 					<div class="col-md-4">
-						<div class="panel panel-danger">
+						<div class="panel panel-success">
 							@PanelHeader("user","Client-Side Development",true)
 							<div class="panel-body">
-								<p>Using HTML, <span class="text-success">CSS</span>, JavaScript, and AngularJS. Experience with AJAX, jQuery, Bootstrap and Foundation frameworks. Responsive designs with interactivity.</p>
+								<p>Using HTML, <span class="text-danger">CSS</span>, JavaScript, and AngularJS. Experience with AJAX, jQuery, Bootstrap and Foundation frameworks. Responsive designs with interactivity.</p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="panel panel-danger">
+						<div class="panel panel-success">
 							@PanelHeader("server","Server-Side Development",true)
 							<div class="panel-body">
 								<p>Using ASP.NET MVC and <span class="text-warning">WebForms</span> Public-facing and internal data entry sites. IIS deployment and management. AWS EC2 instance management.</p>
@@ -162,7 +162,7 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="panel panel-danger">
+						<div class="panel panel-success">
 							@PanelHeader("upload","Service Architectures",true)
 							<div class="panel-body">
 								<p>Using <span class="text-warning">WCF</span> and Web API. Experience with SOAP and REST protocols. Good understand of asynchrony and concurrency in such services. JSON and XML messaging.</p>
@@ -180,7 +180,7 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="panel panel-success">
+						<div class="panel panel-danger">
 							@PanelHeader("windows","Desktop Applications",true)
 							<div class="panel-body">
 								<p>Using Windows Forms and WPF. Internal business applications. Data binding and event-driven paradigms. Understanding of asynchrony and concurrency in such applications. Minor UI design.</p>
@@ -188,7 +188,7 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="panel panel-success">
+						<div class="panel panel-danger">
 							@PanelHeader("tablet","Mobile Applications",true)
 							<div class="panel-body">
 								<p>Using Cordova and PhoneGap. Minor Android experience. Optimizations for different platforms and device sizes. Minor experience with device hardware interaction.</p>
@@ -217,7 +217,7 @@
 						<div class="panel panel-info">
 							@PanelHeader("asterisk","Miscellaneous",true)
 							<div class="panel-body">
-								<p>Minor experience with <span class="text-success">Java</span>, PHP, VB.NET, C++. RavenDB and Lucene databases. Apache HTTP Server. Microsoft Office integration and macros.</p>
+								<p>Minor experience with <span class="text-danger">Java</span>, PHP, VB.NET, C++. RavenDB and Lucene databases. Apache HTTP Server. Microsoft Office integration and macros.</p>
 							</div>
 						</div>
 					</div>
@@ -295,15 +295,15 @@
 							@PanelHeader("puzzle-piece","Projects")
 							<ul class="list-group">
 								<li class="list-group-item">Wide range of project for various size clients. Participated in client meetings and requirements gathering.</li>
-								<li class="list-group-item">Maintained website for LG Electronics Air Conditioning, called SOPS. Used <span class="text-danger">MVC</span> hosted on <span class="text-warning">AWS</span> serving thousands of clients.</li>
-								<li class="list-group-item">Created new website for Alpharetta Children's Dentistry as a full back-office solution. Used <span class="text-danger">MVC</span> with <span class="text-danger">AngularJS</span> frontend, interal <span class="text-danger">Web API</span> services, and integration with legacy <span class="text-warning">WebForms</span> site.</li>
-								<li class="list-group-item">Created mobile app for Intelligent Energy Solutions using Cordova with <span class="text-danger">AngularJS</span> Highly customized skinning and jQuery controls.</li>
+								<li class="list-group-item">Maintained website for LG Electronics Air Conditioning, called SOPS. Used <span class="text-success">MVC</span> hosted on <span class="text-warning">AWS</span> serving thousands of clients.</li>
+								<li class="list-group-item">Created new website for Alpharetta Children's Dentistry as a full back-office solution. Used <span class="text-success">MVC</span> with <span class="text-success">AngularJS</span> frontend, interal <span class="text-success">Web API</span> services, and integration with legacy <span class="text-warning">WebForms</span> site.</li>
+								<li class="list-group-item">Created mobile app for Intelligent Energy Solutions using Cordova with <span class="text-success">AngularJS</span> Highly customized skinning and jQuery controls.</li>
 							</ul>
 						</div>
 						<div class="panel panel-info">
 							@PanelHeader("users","Teams")
 							<ul class="list-group">
-								<li class="list-group-item">Teams of 1-4 developers, depending on project, using <span class="text-danger">Git</span> as source control.</li>
+								<li class="list-group-item">Teams of 1-4 developers, depending on project, using <span class="text-success">Git</span> as source control.</li>
 								<li class="list-group-item">Daily to bi-weekly standups based on project, using JIRA as issue tracker.</li>
 							</ul>
 						</div>
@@ -318,16 +318,16 @@
 							@PanelHeader("puzzle-piece","Projects")
 							<ul class="list-group">
 								<li class="list-group-item">Worked on major revamp of public-facing <span class="text-warning">WebForms</span> site, called FOCAL<em>web</em>, with hundreds of users.</li>
-								<li class="list-group-item">Created internal administrative data-entry and CRUD sites using <span class="text-danger">MVC</span></li>
-								<li class="list-group-item">Maintained web services using <span class="text-warning">WCF</span> and created new ones using <span class="text-danger">Web API</span></li>
-								<li class="list-group-item">Maintained workflow management client, called Ivanovo, using <span class="text-success">WPF</span> Data synchrony across clients using <span class="text-warning">WCF</span> callbacks.</li>
+								<li class="list-group-item">Created internal administrative data-entry and CRUD sites using <span class="text-success">MVC</span></li>
+								<li class="list-group-item">Maintained web services using <span class="text-warning">WCF</span> and created new ones using <span class="text-success">Web API</span></li>
+								<li class="list-group-item">Maintained workflow management client, called Ivanovo, using <span class="text-danger">WPF</span> Data synchrony across clients using <span class="text-warning">WCF</span> callbacks.</li>
 								<li class="list-group-item">Heavy focus on security due to financial sector.</li>
 							</ul>
 						</div>
 						<div class="panel panel-info">
 							@PanelHeader("users","Teams")
 							<ul class="list-group">
-								<li class="list-group-item">Small team of 2-3 developers, using <span class="text-warning">Subversion</span> and <span class="text-danger">Git</span> as source control.</li>
+								<li class="list-group-item">Small team of 2-3 developers, using <span class="text-warning">Subversion</span> and <span class="text-success">Git</span> as source control.</li>
 								<li class="list-group-item">Weekly scrum meetings using Trello and LeanKit as workflow and issue trackers.</li>
 							</ul>
 						</div>
