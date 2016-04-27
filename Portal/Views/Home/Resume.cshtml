@@ -2,9 +2,9 @@
 	Layout=null;
 }
 
-@helper SectionHeader(string icon,string heading)
+@helper SectionHeader(string icon,string heading,string additionalClasses="")
 {
-	<div class="well">
+	<div class="well @additionalClasses">
 		<div class="row">
 			<div class="col-xs-2 col-sm-1">
 				<h2><i class="fa fa-@icon"></i></h2>
@@ -86,6 +86,7 @@
 	<link rel="icon" href="~/Content/Images/favicon.ico" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	@Styles.Render("~/Content/css")
+	<link type="text/css" rel="stylesheet" media="print" href="~/Content/print.css" />
 	<style type="text/css">
 		.progress-technology {
 			margin-top: 15px;
@@ -100,7 +101,7 @@
 	</style>
 </head>
 <body>
-	<div class="navbar navbar-default navbar-fixed-top">
+	<div class="navbar navbar-default navbar-fixed-top hidden-print">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -140,7 +141,7 @@
 				</div>
 			</div>
 		</div>
-		<a class="anchor" id="skills"></a>
+		<a class="anchor print-page-break" id="skills"></a>
 		<div class="row">
 			<div class="col-xs-12">
 				@SectionHeader("wrench","Skills")
@@ -224,7 +225,7 @@
 				</div>
 			</div>
 		</div>
-		<a class="anchor" id="technologies"></a>
+		<a class="anchor print-page-break" id="technologies"></a>
 		<div class="row">
 			<div class="col-xs-12">
 				@SectionHeader("laptop","Technologies")
@@ -282,7 +283,7 @@
 				</div>
 			</div>
 		</div>
-		<a class="anchor" id="experience"></a>
+		<a class="anchor print-page-break" id="experience"></a>
 		<div class="row">
 			<div class="col-xs-12">
 				@SectionHeader("briefcase","Experience")
@@ -336,7 +337,7 @@
 			</div>
 		</div>
 	</div>
-	<footer class="navbar-default">
+	<footer class="navbar-default hidden-print">
 		<div class="container">
 			<p>Flatly theme from <a href="http://bootswatch.com/flatly/">bootswatch.com</a>.</p>
 		</div>
