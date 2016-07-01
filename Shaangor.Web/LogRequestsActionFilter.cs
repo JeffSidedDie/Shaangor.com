@@ -33,16 +33,17 @@ namespace Shaangor.Web
 			if(ShouldLogRequests&&(filterContext.ActionDescriptor.GetCustomAttributes(LogRequestsAttributeType,true).Any()||filterContext.ActionDescriptor.ControllerDescriptor.GetCustomAttributes(LogRequestsAttributeType,true).Any()))
 			{
 				var request=filterContext.HttpContext.Request;
-				var routeData=request.RequestContext.RouteData;
 				var logEntry=new RequestLogEntry()
 				{
-					RequestTimestamp=DateTime.Now,
-					RequestMethod=request.RequestType,
+					UserName=filterContext.HttpContext.User.Identity.Name,
+					IpAddress=request.UserHostAddress,
 					Uri=request.Url,
-					IPAddress=request.UserHostAddress,
-					Controller=(string)routeData.Values["controller"],
-					Action=(string)routeData.Values["action"],
-					RequestHeaders=request.Headers.Concatenate()
+					Method=request.RequestType,
+					RequestContentType=request.ContentType,
+					RequestHeaders=request.Headers.Concatenate(),
+					RequestTimestamp=DateTime.Now,
+					Controller=filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
+					Action=filterContext.ActionDescriptor.ActionName,
 				};
 
 				using(var reader = new StreamReader(request.InputStream))
@@ -72,9 +73,11 @@ namespace Shaangor.Web
 					var filter=sender as CopySinkWrapperStream;
 
 					var response=filterContext.HttpContext.Response;
-					logEntry.ResponseTimestamp=DateTime.Now;
+					logEntry.ResponseStatusCode=response.StatusCode;
+					logEntry.ResponseContentType=response.ContentType;
 					logEntry.ResponseHeaders=response.Headers.Concatenate();
 					logEntry.ResponseBody=filter.ReadCopyToEnd();
+					logEntry.ResponseTimestamp=DateTime.Now;
 
 					var repository=_repositoryFactory();
 					repository.Add(logEntry);
