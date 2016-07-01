@@ -1,20 +1,22 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 
 namespace Shaangor.Web
 {
-	internal sealed class CopySinkWrapperFilter:Stream
+	internal sealed class CopySinkWrapperStream:Stream
 	{
-		private Stream _sink;
-		private Stream _copy;
+		private readonly Stream _sink;
+		private readonly Stream _copy;
+		private readonly Encoding _encoding;
 
-		public AccessLogItem AccessLogItem { get; private set; }
+		public event EventHandler BeforeClose;
 
-		internal CopySinkWrapperFilter(Stream sink,AccessLogItem item)
+		internal CopySinkWrapperStream(Stream sink,Encoding encoding)
 		{
 			_sink=sink;
-			AccessLogItem=item;
 			_copy=new MemoryStream();
+			_encoding=encoding;
 		}
 
 		public override bool CanRead
@@ -40,21 +42,24 @@ namespace Shaangor.Web
 		public override long Position
 		{
 			get { return _sink.Position; }
-			set { _sink.Position=value; }
+			set { _sink.Position=_copy.Position=value; }
 		}
 
 		public override long Seek(long offset,SeekOrigin direction)
 		{
+			_copy.Seek(offset,direction);
 			return _sink.Seek(offset,direction);
 		}
 
 		public override void SetLength(long length)
 		{
+			_copy.SetLength(length);
 			_sink.SetLength(length);
 		}
 
 		public override void Close()
 		{
+			BeforeClose?.Invoke(this,new EventArgs());
 			_sink.Close();
 			_copy.Close();
 		}
@@ -62,8 +67,7 @@ namespace Shaangor.Web
 		public override void Flush()
 		{
 			_sink.Flush();
-			AccessLogItem.ResponseBody=GetContents(new UTF8Encoding(false));
-			//TODO: log to db here
+			_copy.Flush();
 		}
 
 		public override int Read(byte[] buffer,int offset,int count)
@@ -73,16 +77,20 @@ namespace Shaangor.Web
 
 		public override void Write(byte[] buffer,int offset,int count)
 		{
-			_copy.Write(buffer,0,count);
+			_copy.Write(buffer,offset,count);
 			_sink.Write(buffer,offset,count);
 		}
 
-		public string GetContents(Encoding encoding)
+		public string ReadCopyToEnd()
 		{
-			var buffer=new byte[_copy.Length];
-			_copy.Position=0;
-			_copy.Read(buffer,0,buffer.Length);
-			return encoding.GetString(buffer,0,buffer.Length);
+			using(var reader = new StreamReader(_copy,_encoding,true,1024,true))
+			{
+				var currentPosition=_copy.Position;
+				_copy.Position=0L;
+				var text=reader.ReadToEnd();
+				_copy.Position=currentPosition;
+				return text;
+			}
 		}
 	}
 }
