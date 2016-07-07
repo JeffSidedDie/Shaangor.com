@@ -19,7 +19,8 @@ namespace Portal
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/Content/font-googleapis-lato-italic.css",
 				"~/Content/bootstrap.css",
-				"~/Content/site.css"));
+				"~/Content/site.css",
+				"~/Content/print.css"));
 
 			BundleTable.EnableOptimizations=true;
 		}

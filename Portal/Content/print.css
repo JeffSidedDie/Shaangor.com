@@ -1,6 +1,6 @@
 ﻿@media print {
 
-	/*.progress-bar-success {
+	.progress-bar-success {
 		background-color: #18bc9c !important;
 	}
 
@@ -17,11 +17,11 @@
 		-webkit-print-color-adjust: exact !important;
 		box-shadow: inset 0 0 !important;
 		-webkit-box-shadow: inset 0 0 !important;
-	}*/
+	}
 
-	/*.print-page-break {
+	.print-page-break {
 		page-break-before: always !important;
-	}*/
+	}
 
 	.panel {
 		page-break-inside: avoid;
