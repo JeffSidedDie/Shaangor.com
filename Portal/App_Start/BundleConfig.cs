@@ -26,7 +26,7 @@ namespace Portal
 				"~/Content/font-awesome.css"
 			));
 
-			BundleTable.EnableOptimizations=false;
+			BundleTable.EnableOptimizations=true;
 		}
 	}
 }
