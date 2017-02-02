@@ -1,0 +1,23 @@
+﻿.progress-technology {
+	margin-top: 15px;
+	margin-bottom: 16px;
+}
+
+.anchor {
+	display: block;
+	position: relative;
+	top: -60px;
+	visibility: hidden;
+}
+
+.high {
+	width: 100%;
+}
+
+.medium {
+	width: 66%;
+}
+
+.low {
+	width: 33%;
+}

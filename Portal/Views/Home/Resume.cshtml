@@ -54,15 +54,15 @@
 			<div class="progress progress-technology">
 				@if(level==ProficiencyLevel.High)
 				{
-					<div class="progress-bar progress-bar-success" style="width: 100%"></div>
+					<div class="progress-bar progress-bar-success high"></div>
 				}
 				else if(level==ProficiencyLevel.Medium)
 				{
-					<div class="progress-bar progress-bar-warning" style="width: 66%"></div>
+					<div class="progress-bar progress-bar-warning medium"></div>
 				}
 				else if(level==ProficiencyLevel.Low)
 				{
-					<div class="progress-bar progress-bar-danger" style="width: 33%"></div>
+					<div class="progress-bar progress-bar-danger low"></div>
 				}
 			</div>
 		</div>
@@ -84,20 +84,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Jeff Polakiewicz's Resume</title>
 	<link rel="icon" href="~/Content/Images/favicon.ico" />
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	@Styles.Render("~/Content/css")
-	<style type="text/css">
-		.progress-technology {
-			margin-top: 15px;
-			margin-bottom: 16px;
-		}
-		.anchor {
-			display: block;
-			position: relative;
-			top: -60px;
-			visibility: hidden;
-		}
-	</style>
+	@Styles.Render("~/Content/css/resume")
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top hidden-print">
@@ -302,7 +289,7 @@
 								<li class="list-group-item">Maintained website for LG Electronics Air Conditioning, called SOPS. Used <span class="text-success">MVC</span> hosted on <span class="text-success">AWS</span> serving thousands of clients.</li>
 								<li class="list-group-item">Created new website for Alpharetta Children's Dentistry as a full back-office solution. Used <span class="text-success">MVC</span> with <span class="text-success">AngularJS</span> frontend, interal <span class="text-success">Web API</span> services, and integration with legacy <span class="text-warning">WebForms</span> site.</li>
 								<li class="list-group-item">Created mobile app for Intelligent Energy Solutions using Cordova with <span class="text-success">AngularJS</span> Highly customized skinning and jQuery controls.</li>
-                                <li class="list-group-item">Full-stack client facing and administrative solution for the Association of State and Provincial Psychology Boards implemented with <span class="text-success">MVC</span> and jQuery, using a variety of <span class="text-success">AWS</span> services, including EC2, RDS, S3, SES, and DynamoDB. </li>
+								<li class="list-group-item">Full-stack client facing and administrative solution for the Association of State and Provincial Psychology Boards implemented with <span class="text-success">MVC</span> and jQuery, using a variety of <span class="text-success">AWS</span> services, including EC2, RDS, S3, SES, and DynamoDB. </li>
 							</ul>
 						</div>
 						<div class="panel panel-info">
@@ -346,7 +333,6 @@
 			<p>Flatly theme from <a href="http://bootswatch.com/flatly/">bootswatch.com</a>.</p>
 		</div>
 	</footer>
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/bootstrap")
+	@Scripts.Render("~/bundles/js")
 </body>
 </html>
