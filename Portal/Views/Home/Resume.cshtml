@@ -84,7 +84,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Jeff Polakiewicz's Resume</title>
 	<link rel="icon" href="~/Content/Images/favicon.ico" />
-	@Styles.Render("~/Content/css/resume")
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css" />
+	@Styles.Render("~/Content/css")
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top hidden-print">
@@ -333,6 +335,7 @@
 			<p>Flatly theme from <a href="http://bootswatch.com/flatly/">bootswatch.com</a>.</p>
 		</div>
 	</footer>
-	@Scripts.Render("~/bundles/js")
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

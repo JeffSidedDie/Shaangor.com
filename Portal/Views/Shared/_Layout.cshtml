@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Shaangor's Portal</title>
 	<link rel="icon" href="~/Content/Images/favicon.ico" />
+	<link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css" />
 	@Styles.Render("~/Content/css")
 </head>
 <body>
@@ -33,7 +34,8 @@
 			<p>Made by Jeff Polakiewicz. Flatly theme from <a href="http://bootswatch.com/flatly/">bootswatch.com</a>.</p>
 		</div>
 	</footer>
-	@Scripts.Render("~/bundles/js")
-	@RenderSection("scripts",required :false)
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	@RenderSection("scripts",required: false)
 </body>
 </html>
