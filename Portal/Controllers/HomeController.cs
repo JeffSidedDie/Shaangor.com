@@ -10,10 +10,10 @@ namespace Portal.Controllers
 	{
 		public ActionResult Index()
 		{
-			return View();
+			return View("Resume");
 		}
 
-		public ActionResult Resume()
+		public ActionResult Portal()
 		{
 			return View();
 		}

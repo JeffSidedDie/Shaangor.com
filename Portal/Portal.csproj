@@ -144,7 +144,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Portal.cshtml" />
     <Content Include="Views\Home\Resume.cshtml" />
   </ItemGroup>
   <ItemGroup>
