@@ -74,6 +74,10 @@ footer .container {
 	blockquote {
 		page-break-inside: avoid;
 	}
+
+	.print-fix {
+        float: none !important;
+    }
 }
 
 .progress-technology {
